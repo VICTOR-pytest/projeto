@@ -1,0 +1,32 @@
+<div class="jobs-container">
+  <header class="jobs-header">
+    <h1>Vagas</h1>
+    <%= link_to 'Nova vaga', new_job_path, class: 'btn primary' %>
+  </header>
+
+  <% if @jobs.any? %>
+    <table class="jobs-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Salário</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td><%= link_to job.job, job_path(job) %></td>
+            <td><%= job.salario %></td>
+            <td class="actions-cell">
+              <%= link_to 'Editar', edit_job_path(job), class: 'btn' %>
+              <%= link_to 'Remover', job_path(job), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Nenhuma vaga cadastrada.</p>
+  <% end %>
+</div>

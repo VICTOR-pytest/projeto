@@ -1,0 +1,29 @@
+<div class="job-form">
+  <%= form_with(model: job, local: true) do |f| %>
+    <% if job.errors.any? %>
+      <div class="errors">
+        <h3><%= pluralize(job.errors.count, "erro") %> proibiu o salvamento:</h3>
+        <ul>
+          <% job.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :job, "Título da vaga" %>
+      <%= f.text_field :job, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :salario, "Salário" %>
+      <%= f.text_field :salario %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: "btn primary" %>
+      <%= link_to 'Voltar', jobs_path, class: 'btn secondary' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="job-show">
+  <h1><%= @job.job %></h1>
+
+  <dl class="job-meta">
+    <dt>Salário</dt>
+    <dd><%= @job.salario %></dd>
+    <dt>Criado em</dt>
+    <dd><%= l(@job.created_at, format: :short) %></dd>
+  </dl>
+
+  <div class="show-actions">
+    <%= link_to 'Editar', edit_job_path(@job), class: 'btn' %>
+    <%= link_to 'Voltar para lista', jobs_path, class: 'btn secondary' %>
+  </div>
+</div>
